@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('skills')->nullable();
             $table->string('portfolio_url')->nullable();
             $table->string('hourly_rate')->nullable();
-            $table->boolean('availability')->default(true);
+            $table->string('availability')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
