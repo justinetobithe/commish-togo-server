@@ -19,7 +19,7 @@ class PostSeeder extends Seeder
         $posts = [
             [
                 'uuid' => Str::uuid(),
-                'user_id' => 7,
+                'user_id' => 1,
                 'title' => 'Freelance Graphic Designer Needed',
                 'content' => '<p>We are looking for a freelance graphic designer to help with various projects.</p>',
                 'location' => 'Remote',
@@ -33,7 +33,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'uuid' => Str::uuid(),
-                'user_id' => 7,
+                'user_id' => 1,
                 'title' => 'Academic Tutoring for High School Students',
                 'content' => '<p>Looking for a tutor to help with mathematics and science subjects.</p>',
                 'location' => 'New York',
@@ -47,7 +47,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'uuid' => Str::uuid(),
-                'user_id' => 7,
+                'user_id' => 1,
                 'title' => 'Project-Based Activity for Students',
                 'content' => '<p>Looking for someone to manage a project-based learning experience.</p>',
                 'location' => 'California',
@@ -61,7 +61,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'uuid' => Str::uuid(),
-                'user_id' => 7,
+                'user_id' => 1,
                 'title' => 'Essay Writing Assistance for College Students',
                 'content' => '<p>Assistance needed in writing essays for college students.</p>',
                 'location' => 'Online',
@@ -75,7 +75,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'uuid' => Str::uuid(),
-                'user_id' => 7,
+                'user_id' => 1,
                 'title' => 'Career Counseling for Graduates',
                 'content' => '<p>We are offering career counseling services for recent graduates.</p>',
                 'location' => 'Chicago',
