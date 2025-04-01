@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('hourly_rate')->nullable();
             $table->boolean('availability')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
