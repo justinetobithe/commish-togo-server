@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\EducationalAttainmentController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\MeController;
@@ -106,5 +107,11 @@ Route::middleware('auth:sanctum', 'throttle:60,1')->group(function () {
         Route::post('/', [EducationalAttainmentController::class, 'store']);
         Route::put('/{id}', [EducationalAttainmentController::class, 'update']);
         Route::delete('/{id}', [EducationalAttainmentController::class, 'destroy']);
+    });
+
+    Route::get('/conversatins', [ConversationController::class, 'index']);
+    Route::prefix('/conversation')->group(function () {
+        Route::post('/', [ConversationController::class, 'store']);
+        Route::get('/{id}', [ConversationController::class, 'show']);
     });
 });
