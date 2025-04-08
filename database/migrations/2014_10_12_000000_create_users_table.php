@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('student_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
