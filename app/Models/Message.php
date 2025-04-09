@@ -9,6 +9,7 @@ class Message extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $guarded = ['id'];
 
     public function conversation()
@@ -21,8 +22,8 @@ class Message extends Model
         return $this->belongsTo(User::class, 'sender_id');
     }
 
-    public function recipient()
-    {
-        return $this->belongsTo(User::class, 'recipient_id');
-    }
+    // public function recipient()
+    // {
+    //     return $this->belongsTo(User::class, 'recipient_id');
+    // }
 }

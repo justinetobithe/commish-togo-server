@@ -1,5 +1,8 @@
 <?php
 
+use App\Events\NotificationEvent;
+use App\Models\User;
+use App\Notifications\JobApplicationSent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+ 

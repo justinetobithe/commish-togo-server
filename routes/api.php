@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\EducationalAttainmentController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\MeController;
@@ -48,6 +47,7 @@ Route::middleware('auth:sanctum', 'throttle:60,1')->group(function () {
         Route::post('/', [UserController::class, 'store']);
         Route::get('/{user}', [UserController::class, 'show']);
         Route::delete('/{user}', [UserController::class, 'destroy']);
+        Route::get('/{user}/notifications', [UserController::class, 'notifications']);
     });
 
     Route::group(['prefix' => 'messages'], function () {
@@ -109,9 +109,9 @@ Route::middleware('auth:sanctum', 'throttle:60,1')->group(function () {
         Route::delete('/{id}', [EducationalAttainmentController::class, 'destroy']);
     });
 
-    Route::get('/conversatins', [ConversationController::class, 'index']);
-    Route::prefix('/conversation')->group(function () {
-        Route::post('/', [ConversationController::class, 'store']);
-        Route::get('/{id}', [ConversationController::class, 'show']);
-    });
+    // Route::get('/conversations', [ConversationController::class, 'index']);
+    // Route::prefix('/conversation')->group(function () {
+    //     Route::post('/', [ConversationController::class, 'store']);
+    //     Route::get('/{id}', [ConversationController::class, 'show']);
+    // });
 });

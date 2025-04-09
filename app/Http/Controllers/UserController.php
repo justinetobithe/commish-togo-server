@@ -118,4 +118,13 @@ class UserController extends Controller
             'user' => $user,
         ]);
     }
+
+    public function notifications(User $user)
+    {
+        try {
+            return $user->notifications;
+        } catch (\Exception $e) {
+            return [];
+        }
+    }
 }

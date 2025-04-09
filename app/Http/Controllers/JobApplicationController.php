@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobApplicationRequest;
 use App\Models\JobApplication;
+use App\Models\User;
+use App\Notifications\JobApplicationSent;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -70,6 +72,19 @@ class JobApplicationController extends Controller
         }
 
         $jobApplication = JobApplication::create($validated);
+
+
+        // NOTIFY USER
+        if ($jobApplication) {
+            $job_application = JobApplication::find($jobApplication->id);
+            $user = User::find($job_application->post->user->id);
+            $recipient = User::find($job_application->user_id);
+            $user->notify(new JobApplicationSent([
+                'user' => $recipient->first_name . ' ' . $recipient->last_name,
+                'message' => 'applied in your job application post',
+                'created_at' => $job_application->created_at,
+            ]));
+        }
 
         return response()->json([
             'status' => 'success',

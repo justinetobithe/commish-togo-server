@@ -31,7 +31,7 @@ class ConversationController extends Controller
 
         return $this->success($conversation, 'Conversation created', 201);
     }
- 
+
     public function index(Request $request)
     {
         $user = $request->user();
