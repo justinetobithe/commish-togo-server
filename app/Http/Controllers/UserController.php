@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Notification;
 use App\Models\User;
 use App\Traits\ApiResponse;
+use Date;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -125,6 +127,25 @@ class UserController extends Controller
             return $user->notifications;
         } catch (\Exception $e) {
             return [];
+        }
+    }
+
+    /**
+     * 
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    public function markAsRead(string $id)
+    {
+        try {
+            $notification = Notification::find($id);
+            $notification->markAsRead();
+
+            return $this->success([
+                'read_at' => Date::now()
+            ], __('messages.success.updated'));
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage());
         }
     }
 }

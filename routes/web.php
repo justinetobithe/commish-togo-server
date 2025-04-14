@@ -1,8 +1,5 @@
 <?php
 
-use App\Events\NotificationEvent;
-use App\Models\User;
-use App\Notifications\JobApplicationSent;
 use Illuminate\Support\Facades\Route;
 
 /*
