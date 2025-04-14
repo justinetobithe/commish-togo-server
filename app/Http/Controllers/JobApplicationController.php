@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Notifications\JobApplicationSent;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class JobApplicationController extends Controller
@@ -81,8 +82,8 @@ class JobApplicationController extends Controller
             $recipient = User::find($job_application->user_id);
             $user->notify(new JobApplicationSent([
                 'user' => $recipient->first_name . ' ' . $recipient->last_name,
-                'message' => 'applied in your job application post',
-                'created_at' => $job_application->created_at,
+                'message' => 'applied in your job application post ' . '"' . $job_application->post->title . '"',
+                'original_user_id' => $job_application->post->user->id
             ]));
         }
 

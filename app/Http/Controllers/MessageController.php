@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Events\MessageEvent;
+use App\Events\MessageSent;
 use App\Http\Requests\MessageRequest;
 use App\Models\Message;
+use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    use ApiResponse;
+    
     public function index(Request $request)
     {
         return Message::where(function ($query) use ($request) {
@@ -29,8 +33,12 @@ class MessageController extends Controller
 
         $store_message = Message::create($validated);
         if ($store_message) {
-            broadcast(new MessageEvent([
-                'user_id' => $store_message->recepient_id
+            $store_message->fresh();
+            broadcast(new MessageSent([
+                'id' => $store_message->id,
+                'sender_id' => $store_message->sender_id,
+                'recipient_id' => $store_message->recipient_id,
+                'content' => $store_message->content,
             ]));
         }
         return $this->success($store_message);

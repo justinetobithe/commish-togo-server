@@ -48,6 +48,7 @@ Route::middleware('auth:sanctum', 'throttle:60,1')->group(function () {
         Route::get('/{user}', [UserController::class, 'show']);
         Route::delete('/{user}', [UserController::class, 'destroy']);
         Route::get('/{user}/notifications', [UserController::class, 'notifications']);
+        Route::post('/notifications/mark-as-read/{id}', [UserController::class, 'markAsRead']);
     });
 
     Route::group(['prefix' => 'messages'], function () {
