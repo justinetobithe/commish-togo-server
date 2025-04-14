@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     use ApiResponse;
-    
+
     public function index(Request $request)
     {
         return Message::where(function ($query) use ($request) {
@@ -41,6 +41,10 @@ class MessageController extends Controller
                 'content' => $store_message->content,
             ]));
         }
-        return $this->success($store_message);
+
+        return response()->json([
+            'success' => true,
+            'data' => $store_message
+        ], 200);
     }
 }
